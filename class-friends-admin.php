@@ -712,7 +712,7 @@ class Friends_Admin {
 		$friend       = $this->check_admin_edit_friend_rules();
 		$friend_posts = new WP_Query(
 			array(
-				'post_type'      => Friends::CPT,
+				'post_type'      => $this->friends->get_all_cached_post_types(),
 				'post_status'    => array( 'publish', 'private', 'trash' ),
 				'author'         => $friend->ID,
 				'posts_per_page' => 25,
@@ -854,7 +854,7 @@ class Friends_Admin {
 		$friend = $this->check_admin_edit_friend();
 		$friend_posts = new WP_Query(
 			array(
-				'post_type'   => Friends::CPT,
+				'post_type'   => $this->friends->get_all_cached_post_types(),
 				'post_status' => array( 'publish', 'private' ),
 				'author'      => $friend->ID,
 			)
